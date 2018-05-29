@@ -1,0 +1,44 @@
+id,date,day_id,home_id,away_id,venue_id,,,,,id,venue,,,id,team
+1,9/9/17,7,1,3,1,,,,,1,LA Memorial Coliseum,,,1,USC Trojans
+2,9/23/17,7,2,1,2,,,,,2,California Memorial Stadium,,,2,California Golden Bears
+3,9/23/17,7,3,4,3,,,,,3,Stanford Stadium,,,3,Stanford Cardinal
+4,9/29/17,6,1,8,4,,,,,4,Martin Stadium,,,4,UCLA Bruins
+5,9/30/17,7,3,7,3,,,,,5,Rose Bowl,,,5,Oregon Ducks
+6,9/30/17,7,4,9,5,,,,,6,Autzen Stadium,,,6,Utah Utes
+7,9/30/17,7,5,2,6,,,,,7,Rice-Eccles Stadium,,,7,Arizona State Sun Devils
+8,10/7/17,7,1,10,1,,,,,8,Reser Stadium,,,8,Washington State Cougars
+9,10/7/17,7,6,3,7,,,,,9,Sun Devil Stadium,,,9,Colorado Buffaloes
+10,10/13/17,6,2,8,2,,,,,,,,,10,Oregon State Beavers
+11,10/14/17,7,1,6,1,,,,,,,,,,
+12,10/14/17,7,3,5,3,,,,,,,,,,
+13,10/21/17,7,4,5,5,,,,,,,,,,
+14,10/26/17,5,5,3,8,,,,,id,day,,,,
+15,10/28/17,7,7,1,9,,,,,1,Sunday,,,,
+16,10/28/17,7,2,9,2,,,,,2,Monday,,,,
+17,11/4/17,6,6,4,7,,,,,3,Tuesday,,,,
+18,11/4/17,6,2,10,2,,,,,4,Wednesday,,,,
+19,11/18/17,7,1,4,1,,,,,5,Thursday,,,,
+,,,,,,,,,,6,Friday,,,,
+,,,,,,,,,,7,Saturday,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+id,date,,,,,,,,,,,,,,
+1,9/9/17,Saturday,USC Trojans,Stanford Cardinal,LA Memorial Coliseum,,,,,,,,,,
+2,9/23/17,Saturday,California Golden Bears,USC Trojans,California Memorial Stadium,,,,,,,,,,
+3,9/23/17,Saturday,Stanford Cardinal,UCLA Bruins,Stanford Stadium,,,,,,,,,,
+4,9/29/17,Friday,USC Trojans,Washington State Cougars,Martin Stadium,,,,,,,,,,
+5,9/30/17,Saturday,Stanford Cardinal,Arizona State Sun Devils,Stanford Stadium,,,,,,,,,,
+6,9/30/17,Saturday,UCLA Bruins,Colorado Buffaloes,Rose Bowl,,,,,,,,,,
+7,9/30/17,Saturday,Oregon Ducks,California Golden Bears,Autzen Stadium,,,,,,,,,,
+8,10/7/17,Saturday,USC Trojans,Oregon State Beavers,LA Memorial Coliseum,,,,,,,,,,
+9,10/7/17,Saturday,Utah Utes,Stanford Cardinal,Rice-Eccles Stadium,,,,,,,,,,
+10,10/13/17,Friday,California Golden Bears,Washington State Cougars,California Memorial Stadium,,,,,,,,,,
+11,10/14/17,Saturday,USC Trojans,Utah Utes,LA Memorial Coliseum,,,,,,,,,,
+12,10/14/17,Saturday,Stanford Cardinal,Oregon Ducks,Stanford Stadium,,,,,,,,,,
+13,10/21/17,Saturday,UCLA Bruins,Oregon Ducks,Rose Bowl,,,,,,,,,,
+14,10/26/17,Thursday,Oregon Ducks,Stanford Cardinal,Reser Stadium,,,,,,,,,,
+15,10/28/17,Saturday,Arizona State Sun Devils,USC Trojans,Sun Devil Stadium,,,,,,,,,,
+16,10/28/17,Saturday,California Golden Bears,Colorado Buffaloes,California Memorial Stadium,,,,,,,,,,
+17,11/4/17,Friday,Utah Utes,UCLA Bruins,Rice-Eccles Stadium,,,,,,,,,,
+18,11/4/17,Friday,California Golden Bears,Oregon State Beavers,California Memorial Stadium,,,,,,,,,,
+19,11/18/17,Saturday,USC Trojans,UCLA Bruins,LA Memorial Coliseum,,,,,,,,,,
