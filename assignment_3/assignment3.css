@@ -1,0 +1,280 @@
+
+		html, body {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			background-image: url("img/background_pattern.png");
+			background-attachment: fixed;
+			background-size: 180px;
+			font-family: Cabin;
+			font-size: 13px;
+			color: #47476b;
+		}
+
+		/*Header Objects*/
+		#header {
+			background-color: black;
+			background-image: url("images/header_copy.jpg");
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			background-size: cover;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			line-height: 150px;
+		}
+		#header h1 {
+			font-size: 50px;
+			color: #47476b;
+			font-weight: bold;
+			font-family: Gloria Hallelujah;
+			text-align: center;
+		}
+
+		/*Container object*/
+		#container {
+			width: 350px;
+			margin-left: auto;
+			margin-right: auto;
+			/*background-color: #ccf5ff;*/
+			background-color: #ccf5ff;
+			padding-bottom: 0px;
+		}
+
+		/*Sidebar containing character images*/
+
+		#leftbar {
+			background-color: #ccf5ff;
+			width: 100%;
+			margin: auto;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.twotogether {
+			position: relative;
+			margin-left: 17px;
+			margin-right: auto;
+		}
+
+		h2 {
+			text-align: center;
+			font-size: 30px;
+			padding-top: 23px;
+			padding-bottom: 14px;
+			margin: 0px 0px;
+			color: #47476b;
+		}
+		.clear {
+			clear: both;
+		}
+
+
+		/*All about thumbnails*/
+		.thumbnail {
+			width: 150px;
+			/*to center the objects in the container*/
+			margin-top: 15px;
+			margin-bottom: 15px;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			/*border: 4px solid white;*/
+			padding: 4px 4px;
+			float: left;
+		}
+		.image {
+			display: block;
+			width: 100%;
+			height: auto;
+
+		}
+		.thumbnail .overlay {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			color: white;
+			text-align: center;
+			/*background-color: rgba(0,204,255, 0.6);  the "a" value is the alpha (transaprency) value that goes from 0 to 1*/
+			background-color: #00b8e6;
+			opacity: 0;
+			transition: .3s ease;
+		}
+		.thumbnail:hover .overlay {
+			opacity: .8;
+			cursor: pointer;
+		}
+		.thumbnail .overlay h3 {
+			text-align: center;
+			position: relative;
+			top: 40%;
+		}
+
+	/*Description Div*/
+
+		#rightbar {
+			background-color: white;
+			width: 100%;
+		}
+		/*for images in the description id*/
+		#rightbar .image2 {
+			float: none;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			width: 80%;
+			position: relative;
+			text-align: center;
+		}
+		#rightbar .image2 img {
+			width: 100%;
+		}
+		#rightbar h3 {
+			text-align: center;
+			font-size: 25px;
+			padding-top: 23px;
+			margin: 0px 0px;
+			color: #47476b;
+		}
+		#rightbar p {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		/*footer*/
+		#footer {
+			background-color: black;
+			text-align: center;
+			font-size: 11px;
+			color: white;
+			padding-top: 0px;
+			padding: 8px 0px;
+			margin: 0px auto;
+		}
+
+	
+/*Screen size adjustments*/
+
+		/* iPad vertical is 768px */
+		@media (min-width: 768px) {
+
+			body {
+				font-size: 17px;
+			}
+			#container {
+				width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: #ccf5ff;
+			}
+			.thumbnail {
+				width: 190px;
+				/*to center the objects in the container*/
+				margin-top: 20px;
+				margin-bottom: 60px;
+				margin-left: 10px;
+				margin-right: 45px;
+				position: relative;
+				padding: 4px 4px;
+				float: none;
+			}
+			h2 {
+				padding-top: 43px;
+			}
+			#leftbar {
+				background-color: #ccf5ff;
+				width: 250px;
+				float: left;
+				margin: auto;
+				text-align: center;
+				margin-bottom: 30px;
+			}
+			#rightbar {
+				background-color: white;
+				width: 550px;
+				float: left;
+			}
+
+		}
+		/* Small desktop starts at 992px */
+		@media (min-width: 992px) {
+			#header h1 {
+				font-size: 75px;
+			}
+			#container {
+				width: 1000px;
+				margin-left: auto;
+				margin-right: auto;
+				/*background-color: #ccf5ff;*/
+				background-color: #ccf5ff;
+			}
+			.thumbnail {
+				width: 240px;
+				/*to center the objects in the container*/
+				margin-top: 60px;
+				margin-bottom: 60px;
+				margin-left: 10px;
+				margin-right: 45px;
+				position: relative;
+				/*border: 4px solid white;*/
+				padding: 4px 4px;
+				float: none;
+			}
+			#leftbar {
+				width: 300px;
+				float: left;
+				margin: auto;
+				text-align: center;
+				margin-bottom: 30px;
+			}
+			#rightbar {
+				width: 700px;
+				float: left;
+			}
+
+		}
+		/* Larger desktop starts around 1200px */
+		@media (min-width: 1200px) {
+			
+			body {
+				font-size: 20px;
+			}
+			#header h1 {
+				font-size: 100px;
+			}
+			#container {
+				width: 1200px;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: #ccf5ff;
+			}
+			.thumbnail {
+				width: 240px;
+				/*to center the objects in the container*/
+				margin-top: 60px;
+				margin-bottom: 60px;
+				margin-left: 9px;
+				margin-right: 45px;
+				position: relative;
+				padding: 4px 4px;
+				float: none;
+			}
+			#leftbar {
+				width: 300px;
+				float: left;
+				margin: auto;
+				text-align: center;
+				margin-bottom: 30px;
+			}
+			#rightbar {
+				width: 900px;
+				float: left;
+			}
+
+		}

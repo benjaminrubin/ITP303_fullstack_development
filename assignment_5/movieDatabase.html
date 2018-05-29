@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<title>Movie Database</title>
+</head>
+<body onload="startup();">
+	<div id="top">
+		<div>
+			<h1 class="col-12 mt-4">Movie Database</h1>
+		</div> <!-- .row -->
+		<div>
+			<form action="" method="" class="col-12" id="search-form">
+				<div class="form-row">
+					<div class="col-12 mt-4 col-sm-6 col-lg-4">
+						<label for="search-id" class="sr-only">Search:</label>
+						<input type="text" name="" class="form-control" id="search-id" placeholder="Search...">
+					</div>
+					<div class="col-12 mt-4 col-sm-auto">
+						<button type="submit" class="btn btn-primary btn-block">Search</button>
+					</div>
+					<div class="col-12 mt-4">
+					Showing <span id="num-results" class="font-weight-bold">0</span> of <span id="tot-results" class="font-weight-bold">0</span> result(s)
+					</div>
+				</div> <!-- .form-row -->
+			</form>
+		</div> <!-- .row -->
+	</div>
+	<div id="results"></div>
+</body>
+<script>
+
+function movieCallBack(data){
+	//cleanup any results that already exist if needed
+	var cleanup = document.querySelector("#results");
+	while (cleanup.hasChildNodes()) {
+		cleanup.removeChild(cleanup.firstChild);
+	}
+	buildresults(data);
+}
+
+// Allow user input
+document.querySelector("#search-form").onsubmit = function(){
+	//grab the text input of what to search
+	var search = document.querySelector("#search-id").value.trim();
+
+	//Building the URL with user input
+	var scriptTag = document.createElement("script");
+	scriptTag.src = "https://api.themoviedb.org/3/search/movie?api_key=fba715c018808e2dba61132ea10a720f&query=" + search + "&callback=movieCallBack";
+	
+	//Append script tag to the html page
+	document.body.appendChild(scriptTag);
+
+	// don't submit the form actually
+	return false;
+}	
+
+
+function buildresults(data){
+
+	//update the result numbers
+	document.querySelector("#num-results").innerHTML = data.results.length;
+	document.querySelector("#tot-results").innerHTML = data.total_results;
+
+	//build the results
+	for(var i = 0; i < data.results.length; i++){
+
+		var dataCell = document.createElement("div");
+		dataCell.classList.add("datacell");
+		
+		var posterCell = document.createElement("div");
+		posterCell.classList.add("poster");
+		
+		var poster = document.createElement("img");
+		poster.src = "https://image.tmdb.org/t/p/w342/" + data.results[i].poster_path;
+		
+		var description = document.createElement("div");
+		description.classList.add("description");
+		var text = data.results[i].overview;
+			if (text.length > 200){
+				text = text.substring(0,200) + "...";
+			}
+		var numbers = data.results[i].vote_average;
+		var rating = "Rating: ";
+		if(numbers == 0){
+			rating += "(none)";
+		}
+		else{
+			rating += data.results[i].vote_average;
+		}
+		rating += "<br><br>" + text;
+		description.innerHTML = rating;
+
+		
+		var title = document.createElement("span");
+		title.innerHTML = data.results[i].title + "</br>";
+	
+		var release = document.createElement("span");
+		release.innerHTML = data.results[i].release_date;
+
+		//append it all
+		posterCell.appendChild(poster);
+		posterCell.appendChild(description);
+		dataCell.appendChild(posterCell);
+		dataCell.appendChild(title);
+		dataCell.appendChild(release);
+
+		document.getElementById("results").appendChild(dataCell);
+
+
+	}
+			//creating a clear
+		var clear = document.createElement("div");
+		clear.classList.add("clear");
+		document.getElementById("results").appendChild(clear);
+}
+
+//when starting up the page, present currently playing movies
+function startup(data){
+	buildresults(data);
+}
+</script>
+<script src="https://api.themoviedb.org/3/movie/now_playing?api_key=fba715c018808e2dba61132ea10a720f&language=en-US&page=1&callback=startup"></script>
+</html>

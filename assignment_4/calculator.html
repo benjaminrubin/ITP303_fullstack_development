@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+	<style>
+		#display {
+			font-size: 2em;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12 text-center mt-5">JS Calculator</h1>
+		</div> <!-- .row -->
+		<div class="row">
+			<div id="calculator" class="mt-4 col-12 col-md-6 ml-md-auto mr-md-auto col-lg-4">
+				<div class="row">
+					<input type="text" id="display" class="col-12 text-right form-control" value="OFF" disabled>
+				</div> <!-- .row -->
+				<div class="row">
+					<button class="col-6 btn btn-lg btn-outline-dark">ON / OFF</button>
+					<button class="col-6 btn btn-lg btn-outline-dark">AC</button>
+				</div> <!-- .row -->
+				<div class="row">
+					<button class="col-3 btn btn-lg btn-outline-dark">7</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">8</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">9</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">/</button>
+				</div> <!-- .row -->
+				<div class="row">
+					<button class="col-3 btn btn-lg btn-outline-dark">4</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">5</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">6</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">x</button>
+				</div> <!-- .row -->
+				<div class="row">
+					<button class="col-3 btn btn-lg btn-outline-dark">1</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">2</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">3</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">-</button>
+				</div> <!-- .row -->
+				<div class="row">
+					<button class="col-3 btn btn-lg btn-outline-dark">0</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">.</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">=</button>
+					<button class="col-3 btn btn-lg btn-outline-dark">+</button>
+				</div> <!-- .row -->
+			</div> <!-- #calculator -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+	<!-- All the functions -->
+<script type="text/javascript">
+
+	var value;
+	var curr;
+	var operator;
+	var inOperation = false;
+	var operatorClicked = false;
+
+	//resets the values of the calculator 
+	function reset() {
+		value = "";
+		curr = "0";
+		operator = "";
+		onDisplay(curr);
+	}
+
+	//functionality of the spacebar
+	function toggle() {
+			if (disabled()){
+				document.querySelector("#display").disabled = false;
+				reset();
+			}
+			else{
+				document.querySelector("#display").disabled = true;
+				reset();
+				document.querySelector("#display").value = "OFF";
+			}
+		//remove focus
+		document.querySelector(".col-6").blur();
+	}
+
+	//When pressing the spacebar
+	document.onkeydown = function(evt) { if (evt.code == "Space"){ toggle();}}
+
+	//updating display
+	function onDisplay(number){	document.querySelector("#display").value = number;}
+
+	//if the display is disabled (i.e. calculator is off)
+	function disabled() { return document.querySelector("#display").disabled;}
+
+	//an array of the top two buttons
+	var functions = document.querySelectorAll(".col-6");
+
+	for (var i = 0; i < functions.length; i++){		
+		functions[i].onclick = function(evt) {
+			if (this.innerHTML == "ON / OFF"){ toggle();}
+			else if (this.innerHTML == "AC"){ if(disabled() == false){ reset();}}
+			this.blur();
+		}
+	}
+
+	function calculation(operator, value, curr){
+		//division
+		if (operator == "/"){ value = (parseFloat(value) / parseFloat(curr));}
+		//multiplication
+		else if (operator == "x"){ value = (parseFloat(value) * parseFloat(curr));}
+		//subtraction
+		else if (operator == "-"){ value = (parseFloat(value) - parseFloat(curr));}
+		//addition
+		else if (operator == "+"){ value = (parseFloat(value) + parseFloat(curr));}
+
+		console.log("about to return");
+		return value;
+	}
+	
+
+	//an array of all calculator buttons
+	var buttons = document.querySelectorAll(".col-3"); 
+
+	for (var i = 0; i < buttons.length; i++){		
+			buttons[i].onclick = function(evt) {
+				//if the calculator is not disabled
+				if (disabled() == false) {
+					//handling the decimal
+					if(this.innerHTML.indexOf(".") > -1){
+						curr += ".";
+						onDisplay(curr);
+					}
+					//button is an operand
+					else if (this.innerHTML == parseFloat(this.innerHTML,10)) {
+							//if it's zero, remove it from the display, 
+							if (document.querySelector("#display").value == "0"){
+								curr = this.innerHTML;
+							}
+							//if an operator was clicked
+							else if (operatorClicked) {
+								curr = this.innerHTML;
+								operatorClicked = false;
+							}
+							//concatenation
+							else {curr += this.innerHTML;}
+
+							console.log("Curr is " + curr);
+							onDisplay(curr);
+
+							operatorClicked = false;
+						}
+					//button is an operator
+					else {
+						//an equal sign has been clicked
+						if (this.innerHTML == "="){
+							value = calculation(operator, value, curr);
+							onDisplay(value);
+							curr = value;
+							operatorClicked = false;
+							inOperation = false;
+						}
+						else {
+							operator = this.innerHTML;
+							if(operatorClicked){
+								console.log("operator is " + operator);
+								console.log("second round");
+								value = calculation(operator,value,curr);
+								onDisplay(value);
+							}
+							else{
+								value = curr;
+								curr = "";
+							}
+						operatorClicked = true;
+
+						}
+					}
+				this.blur();
+			}
+		}	
+	}		
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* ---- START MOBILE STYLES ---- */
+		html, body {
+			padding: 0;
+			margin: 0;
+		}
+		.clear {
+			clear: both;
+		}
+		#header {
+			text-align: center;
+			font-weight: bold;
+			font-size: 30px;
+			background-color: yellow;
+			padding: 20px 0px;
+		}
+		.column {
+			height: 300px;
+			background-color: skyblue;
+			border-bottom: 1px solid white;
+		}
+		.column:nth-child(2n) {
+			background-color: pink;
+		}
+		#row1 .column {
+			width: auto; /* this is default, but explicitly declaring here to compare the differences between mobile and bigger sizes*/
+		}
+
+/* ---- END MOBILE STYLES ---- */
+
+/* -- Bigger size screens build from here -- */
+	  /* edit 01-25-2018 - commented out 480px media query because it is not neccesary */	
+    /*@media (min-width: 480px) {
+			#header {
+				font-size: 44px;
+				background-color: beige;
+			}
+		}*/
+		/* iPad vertical is 768px */
+		@media (min-width: 768px) {
+			#header {
+				font-size: 68px;
+				background-color: lavender;
+			}
+		}
+		/* Small desktop starts at 992px */
+		@media (min-width: 992px) {
+			#header {
+				font-size: 68px;
+				background-color: lightgreen;
+			}
+			#row1 .column {
+				width: 50%;
+				float: left;
+			}
+			#row2 .column {
+				width: 33.333%;
+				float: left;
+			}
+		}
+		/* Larger desktop starts around 1200px */
+		@media (min-width: 1200px) {
+			/* Can keep adding more as needed*/
+		}
